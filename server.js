@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const items = require('./routes/api/items');
+const commonitems = require('./routes/api/commonitems');
 
 const app = express();
 
@@ -28,6 +29,7 @@ mongoose
 
 //Use Routes
 app.use('/api/items', items);
+app.use('/api/commonitems', commonitems);
 
 //Serve static assets if in production
 if(process.env.NODE_ENV === 'production'){

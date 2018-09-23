@@ -13,4 +13,15 @@ router.get('/', (req, res) => {
         .then(commonItems => res.json(commonItems));
 });
 
+// @route   POST api/commonItems
+// @desc    Create A Common Item
+// @access  Public
+router.post('/', (req, res) => {
+    const newItem = new commonItem({
+        name: req.body.name
+    });
+
+    newItem.save().then(commonItem => res.json(commonItem));
+});
+
 module.exports = router;

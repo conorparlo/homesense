@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create schema
-const CommonItemsSchema = new Schema({
+const CommonItemSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -13,4 +13,4 @@ const CommonItemsSchema = new Schema({
     }
 });
 
-module.exports = commonItems = mongoose.model('commonItems', CommonItemsSchema);
+module.exports = commonItem = mongoose.model('commonItem', CommonItemSchema);
