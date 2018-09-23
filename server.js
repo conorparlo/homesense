@@ -10,8 +10,15 @@ const app = express();
 //Bodyparser middleware
 app.use(bodyParser.json());
 
-//DB Config
-const db = require('./config/keys').mongoURI;
+//Local machine DB config
+const env = app.get('env');
+let db;
+
+if(env === 'development'){
+    db = require('./config/keys').mongoURI;
+} else if(env === 'production'){
+    db = `mongodb://${process.env.mlab_user}:${process.env.mlab_pw}@ds051863.mlab.com:51863/homesense`;
+}
 
 //Connect to mongo
 mongoose
@@ -34,5 +41,5 @@ if(process.env.NODE_ENV === 'production'){
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(port, () => console.log(`Server started on port ${port} in environment ${env}`));
 
