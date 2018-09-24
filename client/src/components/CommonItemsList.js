@@ -5,7 +5,6 @@ import {
     ListGroupItem, 
     Button,
     Form,
-    FormGroup,
     Input
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';

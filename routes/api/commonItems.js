@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 //Common Item Model
-const CommonItems = require('../../models/CommonItems');
+const CommonItem = require('../../models/CommonItem');
 
 // @route   GET api/commonItems
 // @desc    Get All Common Items
 // @access  Public
 router.get('/', (req, res) => {
-    CommonItems.find()
+    CommonItem.find()
         .sort({date: -1})
         .then(commonItems => res.json(commonItems));
 });
