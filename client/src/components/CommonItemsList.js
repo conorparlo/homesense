@@ -3,9 +3,7 @@ import {
     Container, 
     ListGroup, 
     ListGroupItem, 
-    Button,
-    Form,
-    Input
+    Button
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
@@ -23,15 +21,14 @@ class CommonItemsList extends Component {
         name: ''
     }
 
-    onSubmit = (e) => {
-        e.preventDefault();
-
+    onAddClick = (name, _id) => {
+        //console.log(_id);
         const newItem = {
-            name: e.target.name.value
+            name: name
         }
-
         this.props.addItem(newItem);
     }
+    
 
     render() {
         const { commonItems } = this.props.commonItem;
@@ -42,21 +39,14 @@ class CommonItemsList extends Component {
                     <TransitionGroup className="shopping-list">
                         {commonItems.map(({ _id, name }) => (
                             <CSSTransition key={_id} timeout={500} classNames="fade">
-                                <ListGroupItem>
-                                    <Form onSubmit={this.onSubmit}>
-                                        <Input 
-                                            type="hidden"
-                                            value={name}
-                                            name="name"
-                                            id="item"
-                                        />
-                                        <Button
-                                            className="remove-btn"
-                                            color="success"
-                                            size="sm"
-                                        >&#43;</Button>
-                                        {name}
-                                    </Form>
+                                <ListGroupItem id={_id}>
+                                    <Button
+                                        className="remove-btn"
+                                        color="success"
+                                        size="sm"
+                                        onClick={() => this.onAddClick(name, _id)}
+                                    >&#43;</Button>
+                                    {name}
                                 </ListGroupItem>
                             </CSSTransition>
                         ))}
