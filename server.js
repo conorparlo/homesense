@@ -17,9 +17,9 @@ let db;
 
 if(env === 'development'){
     //remote mongo db:
-    //db = require('./config/keys').mongoURI;
-    //local mongo db:
-    db = "mongodb://localhost:27017/homesense";
+    db = require('./config/keys').mongoURI;
+    //local mongo db (no internet work):
+    //db = "mongodb://localhost:27017/homesense";
 } else if(env === 'production'){
     db = `mongodb://${process.env.mlab_user}:${process.env.mlab_pw}@ds051863.mlab.com:51863/homesense`;
 }
