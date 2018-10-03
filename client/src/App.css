@@ -1,3 +1,18 @@
+body {
+    height:100%;
+    background:#e1e8f0;
+}
+
+.list-group-item {
+    background:#d7e1ec;
+    border:solid 1px #ccd6e2;
+}
+
+[class*="-dark"] {
+    background:#374153 !important;
+}
+
+
 .remove-btn {
     margin-right: 0.5rem;
 }
@@ -23,3 +38,6 @@
 .hidden {
     display:none;
 }
+
+/* React-Strap Overrides */
+
